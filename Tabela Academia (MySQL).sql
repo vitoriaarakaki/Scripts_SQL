@@ -1,0 +1,261 @@
+DROP TABLE PAGTO CASCADE;
+
+DROP TABLE PROF CASCADE;
+
+DROP TABLE ALUNO CASCADE;
+
+CREATE DATABASE ACADEMIA;
+
+USE ACADEMIA; 
+
+CREATE TABLE PROF
+( 
+  IdProf   varchar(2)   PRIMARY KEY  			  ,
+  Nome     varchar(30)  NOT NULL    			  ,
+  Endereco varchar(70)		    			  ,
+  Cidade   varchar(70)              			  ,	
+  DtNasc   date                     			  ,
+  Sexo     varchar(1)               			  ,
+  CHECK(Sexo IN ('F','M')) 	  
+);
+
+
+CREATE TABLE ALUNO
+( 
+  IdAluno  int     	PRIMARY KEY   			  ,
+  Nome     varchar(30)  NOT NULL    			  ,
+  Endereco varchar(70)		    			  ,
+  Cidade   varchar(70)              			  ,	
+  DtNasc   date                     			  ,
+  Sexo     varchar(1)               			  ,
+  DtMatric date						  , 
+  CHECK(Sexo IN ('F','M')) 	  
+);
+
+
+CREATE TABLE PAGTO
+( IdPagto  int   	PRIMARY KEY   			  ,
+  IdAluno  int      			  		  ,
+  DtPagto  date	       NOT NULL	    			  ,
+  ValLiq   float(7,2)  NOT NULL        			  ,	
+  IdProf   varchar(2)  					  ,
+  FOREIGN KEY(IdAluno) REFERENCES Aluno(IdAluno)	  ,
+  FOREIGN KEY(IdProf)  REFERENCES Prof(IdProf)
+);
+
+/* Inclui registros na tabela ALUNO */
+
+INSERT INTO ALUNO 
+VALUES 
+(10031, 'ROBERTO SANTOS', 'R. MARTINHO SILVA, 112', 'Sao Paulo', STR_TO_DATE('04/09/1967',"%d/%m/%Y"), 'M', STR_TO_DATE('04/12/2006',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10033, 'NELSON FERREIRA', 'R. SAIOA, 239', 'Sao Paulo', STR_TO_DATE('17/02/1967',"%d/%m/%Y"),'M', STR_TO_DATE('14/11/2002',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10080, 'PEDRO SANTOS', 'R. JOAO LUIZ VIVES, 178', 'Sao Paulo', STR_TO_DATE('31/05/2002',"%d/%m/%Y"), 'M', STR_TO_DATE('12/06/2008',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10093, 'EDEVALD PIERI', 'R. VITOR COSTA 822 AP 200', 'Sao Paulo', STR_TO_DATE('06/07/1976',"%d/%m/%Y"), 'M', STR_TO_DATE('17/01/2005',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10174, 'ALESSANDRO AMARAL', 'R. GARAPEBA, 251 AP 74', 'Sao Paulo', STR_TO_DATE('12/09/1973',"%d/%m/%Y"), 'M', STR_TO_DATE('12/01/2007',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10194, 'CARLOS LINS', 'R. RIBEIRAO BONITO 355', 'Sao Paulo', STR_TO_DATE('12/11/1977',"%d/%m/%Y"), 'M', STR_TO_DATE('13/08/2008',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10206, 'LUIS PALERMO', 'R. LOUREIRO DA CRUZ, 35', 'Sao Paulo', STR_TO_DATE('04/02/1961',"%d/%m/%Y"), 'M',STR_TO_DATE('14/07/2006',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10208, 'CLAUDIO BONFANTI', 'R. JOAO SILVA PONTES, 34', 'Sao Roque', STR_TO_DATE('03/03/1960',"%d/%m/%Y"), 'M', STR_TO_DATE('18/05/2007',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10269, 'RICHARD FURCK', 'R. MARIA CELINA 119', 'Sao Paulo', STR_TO_DATE('16/01/1969',"%d/%m/%Y"), 'M', STR_TO_DATE('05/06/2006',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10343, 'LEONARDO GARCIA', 'R. ESMERALDA 74 AP 182', 'Sao Paulo', STR_TO_DATE('14/05/1998',"%d/%m/%Y"), 'M', STR_TO_DATE('06/03/2008',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10384, 'NORIVAL PUGLIERI', 'R. MARCELINO CRUZ 200', 'Sao Paulo', STR_TO_DATE('02/05/1951',"%d/%m/%Y"), 'M', STR_TO_DATE('19/09/2006',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10410, 'JOSE SANCHEZ', 'R. DR ASSIS DE MOURA, 138', 'Guarulhos', STR_TO_DATE('03/08/1966',"%d/%m/%Y"), 'M', STR_TO_DATE('27/03/2008',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10424, 'VICTOR SEIKO', 'Av IV CENTENARIO 1578', 'Campinas', STR_TO_DATE('23/04/1988',"%d/%m/%Y"), 'M', STR_TO_DATE('06/08/2008',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10443, 'MAURO SOARES', 'R. DR PINTO FERRAZ 97', 'Sao Paulo', STR_TO_DATE('05/09/1967',"%d/%m/%Y"), 'M', STR_TO_DATE('22/04/2008',"%d/%m/%Y"));
+
+INSERT INTO ALUNO 
+VALUES 
+(10468, 'PAOLA MORAES', 'R. VERGUEIRO 3645 AP 810', 'Sao Paulo', STR_TO_DATE('11/05/1981',"%d/%m/%Y"), 'F', STR_TO_DATE('15/01/2007',"%d/%m/%Y"));
+
+
+/* Inclui registros na tabela PROF */
+
+INSERT INTO PROF 
+VALUES 
+('CL', 'CARLOS SALMAZZI', 'R. VERGUEIRO 4527', 'Sao Paulo', STR_TO_DATE('01/05/1973',"%d/%m/%Y"), 'M');
+
+INSERT INTO PROF 
+VALUES 
+('EP', 'EVANILDO PEREIRA', 'R. ACLIMAÇÃO 234', 'Sao Paulo', STR_TO_DATE('01/05/1983',"%d/%m/%Y"), 'M');
+
+INSERT INTO PROF 
+VALUES 
+('GA', 'GERSON ALMEIDA', 'R. PD ANTONIO GOUVEIA, 1', 'Sao Paulo', STR_TO_DATE('26/03/1966',"%d/%m/%Y"), 'M');
+
+INSERT INTO PROF 
+VALUES 
+('MA', 'ANGELA FIORILLO', 'R. BELA VISTA, 79', 'Guarulhos', STR_TO_DATE('02/02/1968',"%d/%m/%Y"), 'F');
+
+INSERT INTO PROF 
+VALUES 
+('PL', 'PAULO LAPORTA', 'R. ALENCAR ARARIPE 1311', 'Sao Paulo', STR_TO_DATE('01/03/1967', "%d/%m/%Y"),'M');
+
+INSERT INTO PROF 
+VALUES 
+('RD', 'RICARDO NOVAES', 'R. BAMBORE, 44', 'Sao Paulo', STR_TO_DATE('09/02/1967',"%d/%m/%Y"), 'M');
+
+INSERT INTO PROF 
+VALUES 
+('SS', 'SILVIA SANTANA', 'R. HUNGRIA 22', 'Sao Paulo', STR_TO_DATE('08/08/1962',"%d/%m/%Y"), 'F');
+
+INSERT INTO PROF 
+VALUES 
+('VC', 'VINICIUS CAVANI', 'R. PARAISO 1254', 'Sao Paulo', STR_TO_DATE('01/05/1973', "%d/%m/%Y"), 'M');
+
+/* Inclui registros na tabela PAGTO */
+
+INSERT INTO PAGTO 
+VALUES 
+(70034, 10174, STR_TO_DATE('29/11/2007',"%d/%m/%Y"), 240, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(67057, 10033, STR_TO_DATE('30/11/2007',"%d/%m/%Y"), 218, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(70167, 10468, STR_TO_DATE('19/12/2007',"%d/%m/%Y"), 230, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(70222, 10269, STR_TO_DATE('21/12/2007',"%d/%m/%Y"), 218, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(71368, 10443, STR_TO_DATE('22/12/2007',"%d/%m/%Y"), 240, 'GA');
+
+INSERT INTO PAGTO 
+VALUES 
+(70215, 10080, STR_TO_DATE('29/12/2007',"%d/%m/%Y"), 240, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(67058, 10033, STR_TO_DATE('30/12/2007',"%d/%m/%Y"), 218, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(70223, 10269, STR_TO_DATE('21/01/2008',"%d/%m/%Y"), 218, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(71369, 10443, STR_TO_DATE('22/01/2008',"%d/%m/%Y"), 240, 'GA');
+
+INSERT INTO PAGTO 
+VALUES 
+(70216, 10174, STR_TO_DATE('29/01/2008',"%d/%m/%Y"), 240, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(67059, 10033, STR_TO_DATE('30/01/2008',"%d/%m/%Y"), 218, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(76089, 10468, STR_TO_DATE('26/02/2008',"%d/%m/%Y"), 242, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(70217, 10080, STR_TO_DATE('29/02/2008',"%d/%m/%Y"), 240, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(67060, 10033, STR_TO_DATE('29/02/2008',"%d/%m/%Y"), 218, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(77442, 10468, STR_TO_DATE('26/03/2008',"%d/%m/%Y"), 242, 'MA');
+
+INSERT INTO PAGTO 
+VALUES 
+(77310, 10031, STR_TO_DATE('27/03/2008',"%d/%m/%Y"), 236, 'PL');
+
+INSERT INTO PAGTO 
+VALUES 
+(78317, 10443, STR_TO_DATE('22/06/2008',"%d/%m/%Y"), 241, 'GA');
+--
+SELECT * FROM ALUNO;
+
+SELECT * FROM PROF;
+
+SELECT * FROM PAGTO; 
+
+SELECT IdAluno, Nome, DtNasc FROM ALUNO WHERE DtMatric = '15/03/08' AND '30/04/08' ORDER BY Nome;
+-- OU
+SELECT IdAluno AS COD_ALUNO, Nome AS NOME_ALUNO, DtNasc AS DATA_NASC FROM  ALUNO 
+WHERE DtMatric BETWEEN '15/03/08' AND '30/04/08' ORDER BY Nome;
+-- OU
+SELECT IdAluno AS COD_ALUNO, Nome AS NOME_ALUNO, DtNasc AS DATA_NASC FROM  ALUNO 
+WHERE DtMatric >= '15/03/08' AND DtMatric <= '30/04/08' ORDER BY Nome;
+
+SELECT *  FROM PAGTO;
+
+SELECT IdAluno, IdProf, DtPagto, ValLiq FROM PAGTO WHERE IdAluno = '10468';
+-- OU
+SELECT IdProf AS PROFESSOR, DtPagto AS DATA_PAGTO, ValLiq AS VALOR_LIQ from pagto where IdAluno = 10468;
+
+DELETE FROM PAGTO WHERE IdAluno = '10080';
+
+DELETE FROM ALUNO WHERE IdAluno = '10080';
+
+ALTER TABLE ALUNO ADD (CPF VARCHAR(15) UNIQUE);
+
+UPDATE ALUNO SET DtNasc = '10/11/1977' WHERE Nome = 'Carlos Lins';
+-- OU
+UPDATE ALUNO SET DtNasc = '10/11/77' WHERE IdAluno = 10194;
+
+-- COPIA DE UMA TABELA
+CREATE TABLE COPALUNO AS SELECT * FROM ALUNO; 
+
+DROP TABLE COPALUNO;
+
+INSERT INTO PAGTO (IdPagto, IdAluno, DtPagto, ValLiq, IdProf) VALUES (78400, 10443, '16/10/08', 260.00, 'GA');
+
+DELETE FROM PAGTO WHERE IdAluno = 70215;
+
+ROLLBACK;
+
+SELECT IdAluno AS "Aluno", SUM(ValLiq) as "Total pago",  ROUND(avg(ValLiq), 2) AS "Média de valores"
+FROM PAGTO
+WHERE YEAR(DtPagto) = "2007"
+GROUP BY IdAluno;
+
+SELECT IdProf, COUNT(*) "QTDE PAGTOS" FROM PAGTO WHERE DtPagto BETWEEN '01/01/08' AND '30/06/08' GROUP BY IdProf ORDER BY IdProf;
+
+COMMIT;
