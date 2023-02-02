@@ -180,4 +180,11 @@ INSERT INTO filme(cod_filme, titulo, cod_categ) VALUES (9, '10.000 A.C',3);
 --
 ALTER TABLE cliente MODIFY COLUMN sobrenome varchar(70);
 --
+
+SELECT 
+FROM 
+ON
+GROUP BY
+
+
 COMMIT;
